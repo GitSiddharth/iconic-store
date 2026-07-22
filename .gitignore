@@ -1,0 +1,2 @@
+backend/apps/backend/.env
+**/node_modules
