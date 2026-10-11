@@ -1,3 +1,59 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+
+@theme inline {
+    --font-script: 'Great Vibes', cursive;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-sans: 'DM Sans', sans-serif;
+
+    --color-bg: var(--bg);
+    --color-surface: var(--surface);
+    --color-accent: var(--accent);
+    --color-metal: var(--metal);
+    --color-fg: var(--fg);
+}
+
+/* Default theme + Shringaar (women, red) */
+:root,
+[data-theme='shringaar'] {
+    --bg: #1a0509;
+    --surface: #2e0b14;
+    --accent: #c0213f;
+    --metal: #e2c48a;
+    --fg: #f8ebe6;
+}
+
+/* Shaan (men, blue) */
+[data-theme='shaan'] {
+    --bg: #060d1c;
+    --surface: #0f1d3a;
+    --accent: #3d6fd9;
+    --metal: #c9d3e6;
+    --fg: #e9eefb;
+}
+
+/* Shauq (everyone, green) */
+[data-theme='shauq'] {
+    --bg: #04140f;
+    --surface: #0b2a1e;
+    --accent: #22a06b;
+    --metal: #e8d9b0;
+    --fg: #eaf5ee;
+}
+
+/* Kids */
+[data-theme='kids'] {
+    --bg: #1c0a26;
+    --surface: #2f1040;
+    --accent: #ff4fa3;
+    --metal: #ffc83d;
+    --fg: #fdeefa;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+}
