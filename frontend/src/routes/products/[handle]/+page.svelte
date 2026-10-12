@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { PageProps } from './$types';
+  import { cart } from '$lib/cart.svelte';
   import { formatPrice } from '$lib/store';
 
   let { data }: PageProps = $props();
@@ -91,11 +92,16 @@
       {/if}
 
       <!-- Wired to the cart in the next step -->
-      <button
-        class="mt-10 w-full bg-accent py-4 text-sm tracking-[0.3em] text-white uppercase transition hover:brightness-110"
-      >
-        Add to cart
-      </button>
+     <button
+  onclick={() => variant && cart.add(variant.id)}
+  disabled={cart.busy || !variant}
+  class="mt-10 w-full bg-accent py-4 text-sm tracking-[0.3em] text-white uppercase transition hover:brightness-110 disabled:opacity-60"
+>
+  {cart.busy ? 'Adding…' : 'Add to cart'}
+</button>
+{#if cart.error}
+  <p class="mt-3 text-sm text-red-300">{cart.error}</p>
+{/if}
     </div>
   </div>
 </div>
