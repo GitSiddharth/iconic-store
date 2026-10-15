@@ -3,6 +3,7 @@
   import { onMount } from 'svelte';
   import { cart } from '$lib/cart.svelte';
   import CartDrawer from '$lib/components/CartDrawer.svelte';
+import Footer from '$lib/components/Footer.svelte';
 
   let { children } = $props();
   onMount(() => cart.init());
@@ -21,5 +22,5 @@
 </header>
 
 {@render children()}
-
+<Footer />
 <CartDrawer />
