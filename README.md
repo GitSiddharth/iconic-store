@@ -12,6 +12,7 @@ A headless e-commerce storefront built with SvelteKit and MedusaJS, backed by a 
 | Payments | Razorpay *(planned)* |
 | Deployment | TBD |
 
+
 ## Architecture
 
 This is a **headless commerce** setup — the storefront and the commerce engine are two independent applications that communicate over HTTP. This is the same pattern used by large-scale commerce platforms; either side can be swapped out without touching the other.
