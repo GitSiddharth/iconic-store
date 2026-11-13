@@ -7,6 +7,7 @@ class CartStore {
   cart = $state<any>(null);
   open = $state(false);
   busy = $state(false);
+  ready = $state(false);
   error = $state<string | null>(null);
 
   items = $derived<any[]>(this.cart?.items ?? []);
@@ -21,13 +22,16 @@ class CartStore {
     if (this.loaded || typeof localStorage === 'undefined') return;
     this.loaded = true;
     const id = localStorage.getItem(KEY);
-    if (!id) return;
     try {
-      const { cart } = await sdk.store.cart.retrieve(id);
-      if (cart.completed_at) localStorage.removeItem(KEY);
-      else this.cart = cart;
+      if (id) {
+        const { cart } = await sdk.store.cart.retrieve(id);
+        if (cart.completed_at) localStorage.removeItem(KEY);
+        else this.cart = cart;
+      }
     } catch {
       localStorage.removeItem(KEY);
+    } finally {
+      this.ready = true;
     }
   }
 
@@ -84,6 +88,13 @@ class CartStore {
     } finally {
       this.busy = false;
     }
+  }
+
+  // Clears the bag (used after checkout and on logout).
+  reset() {
+    this.cart = null;
+    this.open = false;
+    if (typeof localStorage !== 'undefined') localStorage.removeItem(KEY);
   }
 }
 

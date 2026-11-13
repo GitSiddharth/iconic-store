@@ -40,7 +40,13 @@
       >
         View bag
       </a>
-      <p class="mt-3 text-center text-xs text-white/40">Checkout coming soon</p>
+      <a
+  href="/checkout"
+  onclick={() => (cart.open = false)}
+  class="mt-3 block bg-[#e2c48a] py-3 text-center text-xs tracking-[0.3em] text-black uppercase transition hover:brightness-110"
+>
+  Checkout
+</a>
     </div>
   {/if}
 </aside>

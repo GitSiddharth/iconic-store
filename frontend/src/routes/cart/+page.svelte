@@ -18,9 +18,12 @@
         <span class="text-white/60">Subtotal</span>
         <span class="text-2xl text-[#e2c48a]">{formatPrice(cart.subtotal, cart.currency)}</span>
       </div>
-      <button disabled class="mt-8 w-full cursor-not-allowed bg-white/10 py-4 text-sm tracking-[0.3em] text-white/50 uppercase">
-        Checkout · coming soon
-      </button>
+      <a
+  href="/checkout"
+  class="mt-8 block w-full bg-[#e2c48a] py-4 text-center text-sm tracking-[0.3em] text-black uppercase transition hover:brightness-110"
+>
+  Checkout
+</a>
     {/if}
   </div>
 </div>
